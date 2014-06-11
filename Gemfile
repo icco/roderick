@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'erubis', '~> 2.7.0'
+gem 'gdbm'
 gem 'nokogiri'
 gem 'oj'
 gem 'rake'
