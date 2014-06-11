@@ -11,3 +11,7 @@ A dictionary which promotes exploring of words.
  * http://dictionary.reference.com/help/contentnotices.html
  * http://web.archive.org/web/20081229025607/http://icon.shef.ac.uk/Moby/
  * http://www.caliban.org/ruby/ruby-dict.shtml
+ * http://ftp.gnu.org/gnu/gcide/
+ * https://en.wiktionary.org/wiki/Wiktionary:Public_domain_sources
+ * https://en.wiktionary.org/wiki/Wiktionary:Other_dictionaries_on_the_Web#Public_domain_dictionaries
+ * http://www.ibiblio.org/webster/
