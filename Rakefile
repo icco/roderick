@@ -28,7 +28,7 @@ task :build do
 
       p @db.keys.count
 
-      lib::GzipWriter.open('dict.json.gz') do |gz|
+      Zlib::GzipWriter.open('dict.json.gz') do |gz|
         gz.write(Oj.dump(@db))
       end
     end
