@@ -1,4 +1,5 @@
 require 'bundler/setup'
+Bundler.require(:default)
 
 task :default => :test
 
@@ -9,7 +10,7 @@ end
 
 desc "Build database from gcide files."
 task :build do
-  @db = GDBM.new("fruitstore.db")
+  @db = {}
   Dir.glob('./gcide/CIDE.*').each do |filename|
     puts filename
     File.open(filename, "r:ISO-8859-1") do |file|
@@ -26,6 +27,8 @@ task :build do
       end
 
       p @db.keys.count
+
+      File.open("dict.json", 'w') { |file| file.write(Oj.dump(@db)) }
     end
   end
 end
