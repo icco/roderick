@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="roderick">
   <head>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
-    <script src="app.js"></script>
+    <script src="/angular.min.js"></script>
+    <script src="/app.js"></script>
   </head>
-
-  <body ng-controller="MyCtrl">
-    <button ng-click="loadData()">Load Data From Server</button>
-    <dl>
-      <% @data.each_pair do |k,v| %>
-        <dt><%= k %></dt>
-        <dd><%= v %></dd>
-      <% end %>
-    </dl>
-    <!--
-    <ul>
-      <li ng-repeat="item in items">ID: {{item.id}}, Name: {{item.name}}</li>
-    </ul>
-    -->
+  <body ng-controller="DictCtrl">
+    <div class="container" when-scrolled="loadEntries()">
+      <dl>
+        <div ng-repeat="entry in words">
+          <dt>{{entry.word}}</dt>
+          <dd>{{entry.definition}}</dd>
+        </div>
+      </dl>
+    </div>
   </body>
 </html>
-

@@ -1,14 +1,13 @@
-//create your application module.
-var app = angular.module('myApp', []);
+// Create application module.
+var app = angular.module('roderick', []);
 
-//add a controller to it
-app.controller('MyCtrl', function($scope, $http) {
+// Add a controller to it.
+app.controller('DictCtrl', function($scope, $http) {
 
-   //a scope function to load the data.
+   // A scope function to load the data.
    $scope.loadData = function () {
-      $http.get('/Your/Sinatra/Route').success(function(data) {
-         $scope.items = data;
+      $http.get('/words.json').success(function(data) {
+         $scope.entries = data;
       });
    };
-
 });
