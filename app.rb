@@ -1,5 +1,7 @@
 PER_PAGE = 100
 
+register SassInitializer
+
 get '/' do
   dict = Dictionary.load
   @data = dict.data
@@ -24,8 +26,4 @@ get '/words/:page.json' do
 
   content_type :json
   Oj.dump(dict.to_a[start...finish])
-end
-
-get '/css/style.css' do
-  scss :'css/style', :style => :compact
 end
