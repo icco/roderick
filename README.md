@@ -22,3 +22,4 @@ A dictionary which promotes exploring of words.
 
  * http://jsfiddle.net/vojtajina/U7Bz9/
  * https://medium.com/@jankuca/the-infinite-path-of-scrolling-463bc649c7bd
+ * https://coderwall.com/p/cl7zyg
