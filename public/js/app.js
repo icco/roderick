@@ -14,8 +14,11 @@ app.controller('DictCtrl', function($scope, $http) {
   $scope.loadData = function () {
     $http.get('/words/' + $scope.counter + '.json').success(function(data) {
       $scope.entries = $scope.entries.concat(data)
+      if ($scope.entries.length > 150) {
+        $scope.entries = $scope.entries.slice($scope.entries.length - 151);
+        console.log($scope.entries.length, $scope.entries[0], $scope.entries[150]);
+      }
       $scope.counter += 1;
-      console.log($scope.counter);
     });
   };
 
@@ -32,7 +35,9 @@ app.directive('scroller', function () {
     link: function (scope, elem, attrs) {
       raw = elem[0];
       elem.bind('scroll', function () {
-        if ((raw.scrollTop + raw.offsetHeight + 20) >= raw.scrollHeight) {
+        // console.log(raw.scrollTop);
+        // 100 padding for get time
+        if ((raw.scrollTop + raw.offsetHeight + 100) >= raw.scrollHeight) {
           scope.$apply(scope.scroller);
         }
       });
