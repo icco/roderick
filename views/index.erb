@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="roderick">
   <head>
+    <title>Roderick Dictionary</title>
+    <!--
     <script src="/angular.min.js"></script>
+    -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
     <script src="/app.js"></script>
   </head>
   <body ng-controller="DictCtrl">
-    <div class="container" when-scrolled="loadEntries()">
+    <div class="container" when-scrolled="loadData()">
       <dl>
-        <div ng-repeat="entry in words">
+        <div ng-repeat="entry in entries">
           <dt>{{entry.word}}</dt>
           <dd>{{entry.definition}}</dd>
         </div>

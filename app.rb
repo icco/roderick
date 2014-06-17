@@ -23,5 +23,5 @@ get '/words/:page.json' do
   finish = page * PER_PAGE
 
   content_type :json
-  Oj.dump(dict.to_a[start..finish])
+  Oj.dump(dict.to_a[start...finish])
 end
