@@ -38,12 +38,16 @@ app.controller('DictCtrl', function($scope, $http) {
 
   $scope.loadData();
 });
+
 app.directive('scroller', function () {
   return {
     restrict: 'A',
     link: function (scope, elem, attrs) {
       elem.bind('scroll', function () {
-        console.log("I was scrolled");
+        rawElement = elem[0];
+        if ((rawElement.scrollTop + rawElement.offsetHeight+5) >= rawElement.scrollHeight) {
+          scope.$apply('loadData()');
+        }
       });
     }
   };
