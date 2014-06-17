@@ -1,12 +1,14 @@
 
 // when-scrolled module.
 angular.module('scroll', []).directive('whenScrolled', function() {
-  return function(scope, elm, attr) {
-    var raw = elm[0];
-
-    elm.bind('scroll', function() {
-      if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-        scope.$apply(attr.whenScrolled);
+  return function(scope, element, attrs) {
+    var $myWindow = angular.element($window);
+    $myWindow.bind('scroll', function() {
+      var elementHeight = element.height();
+      var scrollAmount = $myWindow.scrollTop();
+      var delta = 10;
+      if (elementHeight - (scrollAmount + delta) < 0) {
+        scope.$apply(attrs.whenScrolled);
       }
     });
   };
