@@ -1,5 +1,6 @@
 
 // when-scrolled module.
+/*
 angular.module('scroll', []).directive('whenScrolled', function() {
   return function(scope, elm, attr) {
     var raw = elm[0];
@@ -11,6 +12,8 @@ angular.module('scroll', []).directive('whenScrolled', function() {
     });
   };
 });
+
+*/
 
 // Create application module.
 var app = angular.module('roderick', []);
@@ -34,4 +37,14 @@ app.controller('DictCtrl', function($scope, $http) {
   };
 
   $scope.loadData();
+});
+app.directive('scroller', function () {
+  return {
+    restrict: 'A',
+    link: function (scope, elem, attrs) {
+      elem.bind('scroll', function () {
+        console.log("I was scrolled");
+      });
+    }
+  };
 });
