@@ -1,20 +1,3 @@
-
-// when-scrolled module.
-/*
-angular.module('scroll', []).directive('whenScrolled', function() {
-  return function(scope, elm, attr) {
-    var raw = elm[0];
-
-    elm.bind('scroll', function() {
-      if (raw.scrollTop + raw.offsetHeight >= raw.scrollHeight) {
-        scope.$apply(attr.whenScrolled);
-      }
-    });
-  };
-});
-
-*/
-
 // Create application module.
 var app = angular.module('roderick', []);
 
@@ -39,18 +22,19 @@ app.controller('DictCtrl', function($scope, $http) {
   $scope.loadData();
 });
 
+// scroller
 app.directive('scroller', function () {
   return {
     restrict: 'A',
     scope: {
-      loadingMethod: "&"
+      scroller: "&"
     },
     link: function (scope, elem, attrs) {
-      rawElement = elem[0];
+      raw = elem[0];
       elem.bind('scroll', function () {
-          if ((rawElement.scrollTop + rawElement.offsetHeight+5) >= rawElement.scrollHeight) {
-            scope.$apply(scope.loadingMethod);
-          }
+        if ((raw.scrollTop + raw.offsetHeight + 20) >= raw.scrollHeight) {
+          scope.$apply(scope.scroller);
+        }
       });
     }
   };

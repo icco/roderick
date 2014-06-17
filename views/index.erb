@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body ng-controller="DictCtrl">
-    <div class="container" scroller="" loading-method="loadData()">
+    <div class="container" scroller="loadData()">
       <dl>
         <div ng-repeat="entry in entries">
           <dt>{{entry.word}}</dt>
