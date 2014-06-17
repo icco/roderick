@@ -1,9 +1,0 @@
-body, html {
-  height: 99%;
-}
-
-.container {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
