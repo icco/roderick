@@ -11,7 +11,7 @@ end
 desc "Build database from gcide files."
 task :build do
   @db = {}
-  Dir.glob('./gcide/CIDE.*').each do |filename|
+  Dir.glob('./gcide/CIDE.*.txt').each do |filename|
     puts filename
     File.open(filename, "r:ISO-8859-1") do |file|
       chunks = file.read.split(/\n\n/).select{|chunk| chunk =~ /^[<\[]\w/ }
