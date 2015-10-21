@@ -24,3 +24,6 @@ A dictionary which promotes exploring of words.
  * https://medium.com/@jankuca/the-infinite-path-of-scrolling-463bc649c7bd
  * https://coderwall.com/p/cl7zyg
  * http://akashagrawal.me/blog/2014/01/31/infinite-scroller-in-angularjs/
+ * http://dannysu.com/2012/07/07/infinite-scroll-memory-optimization/
+ * http://airbnb.io/infinity/
+
