@@ -17,7 +17,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     mustermann (1.0.2)
-    nokogiri (1.8.3)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     oj (2.12.1)
     rack (2.0.5)
@@ -56,7 +56,7 @@ PLATFORMS
 
 DEPENDENCIES
   erubis (~> 2.7.0)
-  nokogiri (>= 1.8.2)
+  nokogiri (>= 1.8.5)
   oj
   rake
   sass
@@ -67,4 +67,4 @@ DEPENDENCIES
   thin (>= 1.6.3)
 
 BUNDLED WITH
-   1.16.1
+   1.16.6
