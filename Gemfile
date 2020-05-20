@@ -6,7 +6,7 @@ gem 'oj'
 gem 'rake'
 gem 'sass'
 gem 'sinatra', '>= 2.0.2'
-gem 'sinatra-contrib', '>= 2.0.2'
+gem 'sinatra-contrib', '>= 2.0.3'
 gem 'sinatra-flash', '>= 0.3.0'
 gem 'thin', '>= 1.6.3'
 
