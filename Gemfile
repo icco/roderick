@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'erubis', '~> 2.7.0'
-gem 'nokogiri', '>= 1.8.2'
+gem 'nokogiri', '>= 1.11.4'
 gem 'oj'
 gem 'rake'
 gem 'sass'
