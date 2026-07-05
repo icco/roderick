@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "Nat Welch <nat@natwelch.com>",
   "private": true,
+  "packageManager": "pnpm@11.10.0",
   "engines": {
     "node": ">=22"
   },

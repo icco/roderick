@@ -1,0 +1,4 @@
+# pnpm reads build-script approvals here (no longer from package.json).
+# sharp is Next.js's native image-optimization dependency.
+allowBuilds:
+  sharp: true

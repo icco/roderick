@@ -1,11 +1,13 @@
 # syntax=docker/dockerfile:1
 FROM node:26-slim AS base
+# corepack is not bundled in node:26-slim; install it so pnpm is available
+RUN npm install -g corepack && corepack enable
 
 # Install dependencies
 FROM base AS deps
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm ci
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
 # Build the app (Next.js standalone output)
 FROM base AS builder
@@ -13,7 +15,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build
+RUN pnpm run build
 
 # Production runner
 FROM base AS runner
