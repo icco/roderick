@@ -5,7 +5,7 @@ import Link from "next/link";
 
 type Entry = { word: string; definition: string };
 
-// Sticky search; debounced query to /api/search, results in a dropdown.
+// Debounced query to /api/search; results in a dropdown.
 export default function SearchBar() {
   const [q, setQ] = useState("");
   const [results, setResults] = useState<Entry[]>([]);
@@ -55,53 +55,51 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div className="sticky top-0 z-20 border-b border-base-300 bg-base-100/90 backdrop-blur">
-      <div ref={boxRef} className="relative mx-auto max-w-3xl px-4 py-3">
-        <input
-          type="search"
-          value={q}
-          onChange={(e) => {
-            setQ(e.target.value);
-            setOpen(true);
-          }}
-          onFocus={() => setOpen(true)}
-          placeholder="Search 100,000+ words and definitions…"
-          aria-label="Search the dictionary"
-          className="input input-bordered w-full"
-        />
-        {open && q.trim() && (
-          <div className="absolute left-4 right-4 top-full z-30 mt-1 max-h-96 overflow-auto rounded-box border border-base-300 bg-base-100 shadow-lg">
-            {loading && results.length === 0 ? (
-              <p className="p-3 text-base-content/60">Searching…</p>
-            ) : results.length === 0 ? (
-              <p className="p-3 text-base-content/60">
-                No matches for “{q.trim()}”.
-              </p>
-            ) : (
-              <ul>
-                {results.map((e) => (
-                  <li
-                    key={e.word}
-                    className="border-b border-base-200 last:border-0"
+    <div ref={boxRef} className="relative w-full">
+      <input
+        type="search"
+        value={q}
+        onChange={(e) => {
+          setQ(e.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        placeholder="Search 100,000+ words and definitions…"
+        aria-label="Search the dictionary"
+        className="input input-bordered w-full"
+      />
+      {open && q.trim() && (
+        <div className="absolute left-0 right-0 top-full z-30 mt-1 max-h-96 overflow-auto rounded-box border border-base-300 bg-base-100 shadow-lg">
+          {loading && results.length === 0 ? (
+            <p className="p-3 text-base-content/60">Searching…</p>
+          ) : results.length === 0 ? (
+            <p className="p-3 text-base-content/60">
+              No matches for “{q.trim()}”.
+            </p>
+          ) : (
+            <ul>
+              {results.map((e) => (
+                <li
+                  key={e.word}
+                  className="border-b border-base-200 last:border-0"
+                >
+                  <Link
+                    href={`/word/${encodeURIComponent(e.word)}`}
+                    scroll={false}
+                    onClick={() => setOpen(false)}
+                    className="block px-4 py-2 hover:bg-base-200"
                   >
-                    <Link
-                      href={`/word/${encodeURIComponent(e.word)}`}
-                      scroll={false}
-                      onClick={() => setOpen(false)}
-                      className="block px-4 py-2 hover:bg-base-200"
-                    >
-                      <span className="font-medium text-primary">{e.word}</span>
-                      <span className="ml-2 line-clamp-1 text-sm text-base-content/60">
-                        {e.definition}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
-      </div>
+                    <span className="font-medium text-primary">{e.word}</span>
+                    <span className="ml-2 line-clamp-1 text-sm text-base-content/60">
+                      {e.definition}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
     </div>
   );
 }

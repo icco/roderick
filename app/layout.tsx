@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 import { ThemeProvider } from "@icco/react-common/ThemeProvider";
-import { SiteHeader } from "@icco/react-common/SiteHeader";
+import ThemeToggle from "@icco/react-common/ThemeToggle";
 import Link from "next/link";
 import { Roboto, Roboto_Mono } from "next/font/google";
 
@@ -50,21 +50,26 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-base-100 text-base-content antialiased">
         <ThemeProvider>
-          <SiteHeader
-            brand={
-              <Link href="/" className="text-xl font-medium tracking-tight">
-                Roderick
-              </Link>
-            }
-            links={[
-              {
-                name: "Random",
-                href: "/random",
-                icon: <span aria-hidden>🎲</span>,
-              },
-            ]}
-          />
-          <SearchBar />
+          <nav className="sticky top-0 z-30 flex items-center gap-4 border-b border-base-300 bg-base-100/90 px-6 py-3 backdrop-blur">
+            <Link
+              href="/"
+              className="flex-none text-xl font-medium tracking-tight"
+            >
+              Roderick
+            </Link>
+            <div className="grow">
+              <SearchBar />
+            </div>
+            <ThemeToggle />
+            <Link
+              href="/random"
+              aria-label="Random"
+              className="flex flex-none items-center gap-2"
+            >
+              <span aria-hidden>🎲</span>
+              <span className="hidden md:inline">Random</span>
+            </Link>
+          </nav>
           <main>{children}</main>
           <Footer />
         </ThemeProvider>
