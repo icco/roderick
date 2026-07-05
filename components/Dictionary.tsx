@@ -13,9 +13,7 @@ type Entry = { word: string; definition: string };
 
 const BATCH = 50;
 
-// One infinite, bidirectionally-scrollable slice of the whole dictionary,
-// anchored on `anchor` (highlighted + scrolled to the vertical middle on load).
-// Scrolling up prepends earlier words; scrolling down appends later ones.
+// Infinite dictionary anchored on `anchor`: centered on load, scroll up/down to browse.
 export default function Dictionary({
   initial,
   initialStart,
@@ -39,17 +37,14 @@ export default function Dictionary({
 
   const topRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
-  // scrollHeight captured just before a prepend, so we can restore position.
-  const preScrollHeight = useRef<number | null>(null);
+  const preScrollHeight = useRef<number | null>(null); // scrollHeight before a prepend
 
-  // Center the anchor on mount (before paint). Component is keyed by anchor
-  // upstream, so a new word remounts and re-centers.
+  // Center the anchor on mount (keyed by anchor upstream, so nav re-centers).
   useLayoutEffect(() => {
     document.getElementById("dict-anchor")?.scrollIntoView({ block: "center" });
   }, []);
 
-  // After a prepend, add the height that appeared above the viewport back to
-  // the scroll position so the user's view doesn't jump.
+  // Keep the viewport stable after a prepend.
   useLayoutEffect(() => {
     if (preScrollHeight.current !== null) {
       const delta =
@@ -108,9 +103,7 @@ export default function Dictionary({
   }, [loadUp, loadDown]);
 
   return (
-    // overflow-anchor:none disables the browser's native scroll anchoring so our
-    // manual prepend compensation (useLayoutEffect above) is the only correction —
-    // otherwise the two stack and the viewport jumps by one batch height.
+    // overflow-anchor:none so native scroll anchoring doesn't double-correct our prepend.
     <div className="mx-auto max-w-3xl px-4 py-8" style={{ overflowAnchor: "none" }}>
       <div ref={topRef} className="py-4 text-center text-sm text-base-content/60">
         {start <= 0

@@ -2,9 +2,7 @@ import Link from "next/link";
 
 type Entry = { word: string; definition: string };
 
-// One dictionary entry. The highlighted (anchor) entry is emphasized with the
-// theme primary color + a left rule, carries an optional badge and "see also"
-// chips, and gets id="dict-anchor" so Dictionary can scroll it to center.
+// One entry. The highlighted anchor gets id="dict-anchor" (Dictionary centers it), a badge, and see-also chips.
 export default function EntryRow({
   entry,
   highlighted = false,

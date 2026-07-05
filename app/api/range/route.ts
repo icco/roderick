@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { range } from "@/lib/dictionary";
 
-// Index-windowed browse feed for bidirectional infinite scroll.
-// start = global index of the first entry to return; count is clamped 1..200.
+// Windowed browse feed for infinite scroll; count clamped 1..200.
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {

@@ -5,8 +5,7 @@ import Link from "next/link";
 
 type Entry = { word: string; definition: string };
 
-// Sticky, always-available dictionary search. Debounced query against
-// /api/search; results render in a dropdown of links to word pages.
+// Sticky search; debounced query to /api/search, results in a dropdown.
 export default function SearchBar() {
   const [q, setQ] = useState("");
   const [results, setResults] = useState<Entry[]>([]);
