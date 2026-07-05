@@ -1,0 +1,30 @@
+{
+  "name": "roderick",
+  "version": "1.0.0",
+  "description": "A dictionary which promotes exploring of words.",
+  "license": "MIT",
+  "author": "Nat Welch <nat@natwelch.com>",
+  "private": true,
+  "packageManager": "pnpm@11.10.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev -p 8080",
+    "build": "next build",
+    "start": "next start -p 8080"
+  },
+  "dependencies": {
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.2",
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^6.0.3"
+  }
+}
