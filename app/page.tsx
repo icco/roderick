@@ -1,8 +1,7 @@
 import { relatedTo, windowAround, wordOfTheDay } from "@/lib/dictionary";
 import Dictionary from "@/components/Dictionary";
 
-// The landing page is the same dictionary surface, anchored on today's
-// word-of-the-day. Dynamic: depends on today's date and runtime dict.
+// Landing page: the dictionary anchored on the word of the day.
 export const dynamic = "force-dynamic";
 
 const RADIUS = 60;

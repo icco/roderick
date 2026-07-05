@@ -39,9 +39,7 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # Auth for @icco/react-common on GitHub Packages (read:packages via
-          # the workflow's packages permission). Consumed by the Dockerfile's
-          # deps stage as a BuildKit secret.
+          # GitHub Packages auth for @icco/react-common (Dockerfile deps stage).
           secrets: |
             npm_token=${{ secrets.GITHUB_TOKEN }}
       - name: Generate artifact attestation

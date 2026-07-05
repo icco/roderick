@@ -73,12 +73,7 @@ export function range(start: number, count: number): Entry[] {
     .map((word) => ({ word, definition: d.entries.get(word)! }));
 }
 
-/**
- * SSR window centered on a word. Returns the entries spanning
- * [index - radius, index + radius], the global index of the first entry
- * (`start`), the anchor's own index, and the total headword count.
- * Null if the word is absent.
- */
+/** Entries around a word (±radius) plus the start index, the word's index, and total. Null if absent. */
 export function windowAround(
   word: string,
   radius: number,

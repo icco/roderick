@@ -3,9 +3,7 @@ FROM node:26-slim AS base
 # corepack is not bundled in node:26-slim; install it so pnpm is available
 RUN npm install -g corepack && corepack enable
 
-# Install dependencies. @icco/react-common lives on GitHub Packages, which
-# requires auth even to read — the npm_token BuildKit secret provides it and is
-# never baked into a layer (the .npmrc auth line is removed after install).
+# @icco/react-common is on GitHub Packages; npm_token secret auths install (not baked into any layer).
 FROM base AS deps
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
