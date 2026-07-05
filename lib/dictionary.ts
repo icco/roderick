@@ -2,8 +2,6 @@ import { readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import path from "node:path";
 
-export const PER_PAGE = 100;
-
 export type Entry = { word: string; definition: string };
 
 type Dict = {
@@ -57,14 +55,38 @@ export function lookup(word: string): Entry | null {
   return { word: key, definition: d.entries.get(key)! };
 }
 
-/** One page (100) of entries in browse order. Pages are 1-indexed. */
-export function page(n: number): Entry[] {
+/** Position of a word in browse order (case-insensitive); -1 if absent. */
+export function indexOf(word: string): number {
   const d = dict();
-  const p = Math.max(1, n);
-  const start = (p - 1) * PER_PAGE;
+  const entry = lookup(word);
+  if (!entry) return -1;
+  return d.sortedWords.indexOf(entry.word);
+}
+
+/** A clamped slice of the browse order, by global index. */
+export function range(start: number, count: number): Entry[] {
+  const d = dict();
+  const s = Math.max(0, Math.min(start, d.sortedWords.length));
+  const e = Math.max(s, Math.min(s + count, d.sortedWords.length));
   return d.sortedWords
-    .slice(start, start + PER_PAGE)
+    .slice(s, e)
     .map((word) => ({ word, definition: d.entries.get(word)! }));
+}
+
+/** Entries around a word (±radius) plus the start index, the word's index, and total. Null if absent. */
+export function windowAround(
+  word: string,
+  radius: number,
+): { entries: Entry[]; start: number; index: number; total: number } | null {
+  const d = dict();
+  const index = indexOf(word);
+  if (index < 0) return null;
+  const start = Math.max(0, index - radius);
+  const end = Math.min(d.sortedWords.length, index + radius + 1);
+  const entries = d.sortedWords
+    .slice(start, end)
+    .map((w) => ({ word: w, definition: d.entries.get(w)! }));
+  return { entries, start, index, total: d.sortedWords.length };
 }
 
 /**

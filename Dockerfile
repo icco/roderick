@@ -3,11 +3,14 @@ FROM node:26-slim AS base
 # corepack is not bundled in node:26-slim; install it so pnpm is available
 RUN npm install -g corepack && corepack enable
 
-# Install dependencies
+# @icco/react-common is on GitHub Packages; npm_token secret auths install (not baked into any layer).
 FROM base AS deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-RUN pnpm install --frozen-lockfile
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+RUN --mount=type=secret,id=npm_token \
+  echo "//npm.pkg.github.com/:_authToken=$(cat /run/secrets/npm_token)" >> .npmrc \
+  && pnpm install --frozen-lockfile \
+  && rm -f .npmrc
 
 # Build the app (Next.js standalone output)
 FROM base AS builder
