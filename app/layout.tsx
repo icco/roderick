@@ -61,14 +61,14 @@ export default function RootLayout({
               <SearchBar />
             </div>
             <ThemeToggle />
-            <Link
+            <a
               href="/random"
               aria-label="Random"
               className="flex flex-none items-center gap-2"
             >
               <span aria-hidden>🎲</span>
               <span className="hidden md:inline">Random</span>
-            </Link>
+            </a>
           </nav>
           <main>{children}</main>
           <Footer />
