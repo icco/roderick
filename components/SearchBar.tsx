@@ -15,24 +15,28 @@ export default function SearchBar() {
 
   useEffect(() => {
     const query = q.trim();
-    if (!query) {
-      setResults([]);
-      return;
-    }
     const ctrl = new AbortController();
-    const t = setTimeout(async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, {
-          signal: ctrl.signal,
-        });
-        setResults(await res.json());
-      } catch {
-        /* aborted */
-      } finally {
-        setLoading(false);
-      }
-    }, 200);
+    const t = setTimeout(
+      async () => {
+        if (!query) {
+          setResults([]);
+          return;
+        }
+        setLoading(true);
+        try {
+          const res = await fetch(
+            `/api/search?q=${encodeURIComponent(query)}`,
+            { signal: ctrl.signal },
+          );
+          setResults(await res.json());
+        } catch {
+          /* aborted */
+        } finally {
+          setLoading(false);
+        }
+      },
+      query ? 200 : 0,
+    );
     return () => {
       clearTimeout(t);
       ctrl.abort();
