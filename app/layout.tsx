@@ -2,7 +2,12 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 import { ThemeProvider } from "@icco/react-common/ThemeProvider";
+import { SiteHeader } from "@icco/react-common/SiteHeader";
+import Link from "next/link";
 import { Roboto, Roboto_Mono } from "next/font/google";
+
+import SearchBar from "@/components/SearchBar";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
   weight: ["400", "500", "700"],
@@ -45,7 +50,23 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-base-100 text-base-content antialiased">
         <ThemeProvider>
+          <SiteHeader
+            brand={
+              <Link href="/" className="text-xl font-medium tracking-tight">
+                Roderick
+              </Link>
+            }
+            links={[
+              {
+                name: "Random",
+                href: "/random",
+                icon: <span aria-hidden>🎲</span>,
+              },
+            ]}
+          />
+          <SearchBar />
           <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
