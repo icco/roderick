@@ -50,8 +50,6 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-base-100 text-base-content antialiased">
         <ThemeProvider>
-          {/* Sticky so the auto-centering scroll on word pages can't hide the header.
-              Brand, search, and nav all sit on one line. */}
           <nav className="sticky top-0 z-30 flex items-center gap-4 border-b border-base-300 bg-base-100/90 px-6 py-3 backdrop-blur">
             <Link
               href="/"

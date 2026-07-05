@@ -56,8 +56,6 @@
 
   --color-base-100: oklch(32.44% 0.0229 264.18);
   --color-base-content: oklch(95.13% 0.0074 260.73);
-  /* Lighter than base-100 so text-primary (highlighted word, borders, hover) is legible on the dark bg;
-     paired with a dark primary-content so badge-primary stays readable. */
   --color-primary: oklch(72% 0.11 254.03);
   --color-primary-content: oklch(21% 0.04 254.03);
   --color-secondary: oklch(41.57% 0.0324 264.13);

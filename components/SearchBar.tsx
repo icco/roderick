@@ -5,7 +5,7 @@ import Link from "next/link";
 
 type Entry = { word: string; definition: string };
 
-// Sticky search; debounced query to /api/search, results in a dropdown.
+// Debounced query to /api/search; results in a dropdown.
 export default function SearchBar() {
   const [q, setQ] = useState("");
   const [results, setResults] = useState<Entry[]>([]);
