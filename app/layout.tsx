@@ -50,21 +50,24 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-base-100 text-base-content antialiased">
         <ThemeProvider>
-          <SiteHeader
-            brand={
-              <Link href="/" className="text-xl font-medium tracking-tight">
-                Roderick
-              </Link>
-            }
-            links={[
-              {
-                name: "Random",
-                href: "/random",
-                icon: <span aria-hidden>🎲</span>,
-              },
-            ]}
-          />
-          <SearchBar />
+          {/* Sticky so the auto-centering scroll on word pages can't hide the header. */}
+          <div className="sticky top-0 z-30 border-b border-base-300 bg-base-100/90 backdrop-blur">
+            <SiteHeader
+              brand={
+                <Link href="/" className="text-xl font-medium tracking-tight">
+                  Roderick
+                </Link>
+              }
+              links={[
+                {
+                  name: "Random",
+                  href: "/random",
+                  icon: <span aria-hidden>🎲</span>,
+                },
+              ]}
+            />
+            <SearchBar />
+          </div>
           <main>{children}</main>
           <Footer />
         </ThemeProvider>

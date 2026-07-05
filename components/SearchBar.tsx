@@ -55,8 +55,8 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div className="sticky top-0 z-20 border-b border-base-300 bg-base-100/90 backdrop-blur">
-      <div ref={boxRef} className="relative mx-auto max-w-3xl px-4 py-3">
+    <div>
+      <div ref={boxRef} className="relative mx-auto max-w-3xl px-4 pb-3">
         <input
           type="search"
           value={q}
