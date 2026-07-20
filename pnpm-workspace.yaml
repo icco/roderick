@@ -4,3 +4,5 @@ allowBuilds:
   esbuild: true
   sharp: true
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@icco/react-common@2026.10720.2'
