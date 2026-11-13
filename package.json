@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@icco/react-common": "^2026.11029.1",
+    "@icco/react-common": "^2026.11104.1",
     "daisyui": "^5.7.50",
-    "next": "^16.4.3",
+    "next": "^16.4.5",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
@@ -30,10 +30,10 @@
     "@tailwindcss/postcss": "^4.3.4",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
-    "eslint": "^10.13.0",
-    "eslint-config-next": "^16.4.3",
+    "eslint": "^10.14.0",
+    "eslint-config-next": "^16.4.5",
     "tailwindcss": "^4.3.4",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.5"
+    "vitest": "^5.1.0"
   }
 }
