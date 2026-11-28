@@ -6,7 +6,7 @@
 
 **Architecture:** Adopt natwelch.com's daisyUI theme and react-common chrome components in the root layout. Replace the two separate browse/word views with a single client `Dictionary` component that server-renders a window around an anchor word, centers it on load, and infinite-scrolls in both directions via a new `/api/range` endpoint.
 
-**Tech Stack:** Next.js 16 (App Router), React 19, Tailwind CSS v4, daisyUI 5, `@icco/react-common` 2026.x, `@heroicons/react` 2, `@wrksz/themes` (transitive), `next/font` (Roboto), pnpm.
+**Tech Stack:** Next.js 16 (App Router), React 19, Tailwind CSS v4, daisyUI 5, `@icco/react-common` 2026.x, `@wrksz/themes` (transitive), `next/font` (Roboto), pnpm.
 
 ## Global Constraints
 
@@ -60,10 +60,10 @@
 
 ```bash
 cd /Users/nat/Projects/roderick
-pnpm add @icco/react-common@^2026.10627.1 @heroicons/react@^2.2.0 daisyui@^5.5.20
+pnpm add @icco/react-common@^2026.10627.1 daisyui@^5.5.20
 ```
 
-Expected: `package.json` gains the three deps; `pnpm-lock.yaml` updates; `node_modules/@icco/react-common` and `node_modules/@heroicons` exist.
+Expected: `package.json` gains the two deps; `pnpm-lock.yaml` updates; `node_modules/@icco/react-common` exists.
 
 - [ ] **Step 2: Verify react-common subpath + dist exist**
 
