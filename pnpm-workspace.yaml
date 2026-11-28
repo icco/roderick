@@ -6,3 +6,4 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@icco/react-common@2026.10720.2'
+  - '@icco/*'
