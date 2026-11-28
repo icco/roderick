@@ -29,7 +29,7 @@ Branch: `nextjs-rewrite`
 
 Reuse natwelch.com's stack so the chrome is the same components, not lookalikes.
 
-- **Add:** `@icco/react-common@^2026.10627.1`, `@heroicons/react@^2` (peer),
+- **Add:** `@icco/react-common@^2026.10627.1`,
   `daisyui@^5` (Tailwind plugin, dev). `@wrksz/themes` is pulled transitively by
   react-common's `ThemeProvider`.
 - **`app/globals.css`:** replace the custom `:root` / `--accent` CSS variables
